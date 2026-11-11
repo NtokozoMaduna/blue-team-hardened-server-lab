@@ -96,7 +96,7 @@ network:
 3. Apply the configuration: `sudo netplan apply`
 4. Verify: `ip a show enp0s3`
 
-> YAML needs spaces, not tabs.
+> Note: YAML needs spaces, not tabs.
 
 **Startup commands**
 
@@ -187,7 +187,7 @@ The package install completes (Fail2ban 0.11.2 with its `python3-pyinotify` and 
 
 ### 4. Installing the server services
 
-![Installing services](docs/images/04-install-services.png)
+![Installing services](docs/images/04-install-server-services.png)
 
 `sudo apt install -y nginx vsftpd samba` installs the web, FTP and file-sharing services that make up the lab's attack surface.
 
@@ -226,6 +226,12 @@ Zenmap on the Windows host runs `nmap -p 80,445,21,22 192.168.110.103`. Result: 
 ![Kali service scan](docs/images/10-kali-service-scan.png)
 
 `nmap -p 21,22,80,445 10.0.20.10` from Kali (left) reports **21/tcp open (ftp)**, **22/tcp filtered (ssh)**, **80/tcp open (http)** and **445/tcp open (microsoft-ds)**. The server console (right) shows its addresses. The attacker can see and reach the three services but cannot reach SSH, so the firewall blocks it as designed.
+
+### 11. SSH Kali Denial
+
+![Kali service scan](docs/images/12-kali-ssh-denial.png)
+
+Running `ssh ubuntu-sec@10.0.20.10` from Kali on the lab network fails with `Connection timed out` on port 22. UFW only allows SSH from the management host (`192.168.110.1`), so the firewall silently drops the attacker's connection attempt. The session never starts and no login prompt appears, which effectively locks the attacker out of SSH. This matches the **filtered** SSH port in the Nmap scan, where the web, FTP and SMB services stay reachable but SSH does not.
 
 ---
 
