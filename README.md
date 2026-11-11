@@ -47,7 +47,7 @@ The lab uses **two virtual networks** so that management traffic is kept apart f
 | Kali Linux | Attacker/RedTeamer | DHCP on `10.0.20.0/24` | Reconnaissance against the server |
 | Xubuntu | Lightweight client | DHCP on `10.0.20.0/24` | Normal user of the web and FTP services |
 
-![Project BlueTeam Security topology](docs/images/network-topology.png)
+![Project BlueTeam Security topology](docs/images/00-network-topology.png)
 
 ## Tools & Technologies
 
