@@ -229,7 +229,7 @@ Zenmap on the Windows host runs `nmap -p 80,445,21,22 192.168.110.103`. Result: 
 
 ### 11. SSH Kali Denial
 
-![Kali service scan](docs/images/12-kali-ssh-denial.png)
+![Kali service scan](docs/images/11-kali-ssh-denial.png)
 
 Running `ssh ubuntu-sec@10.0.20.10` from Kali on the lab network fails with `Connection timed out` on port 22. UFW only allows SSH from the management host (`192.168.110.1`), so the firewall silently drops the attacker's connection attempt. The session never starts and no login prompt appears, which effectively locks the attacker out of SSH. This matches the **filtered** SSH port in the Nmap scan, where the web, FTP and SMB services stay reachable but SSH does not.
 
